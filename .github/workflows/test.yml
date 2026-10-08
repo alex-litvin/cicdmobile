@@ -1,4 +1,4 @@
-name: test
+name: test1
 
 on:
   push: 
@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
@@ -25,10 +25,21 @@ jobs:
     - name: install dependencies
       run: npm install --legacy-peer-deps
 
-    - name: Run wdio
-      run: npm run wdio 
-      continue-on-error: true   
+    - name: Enable KVM
+      run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0660", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
 
+    - name: run tests
+      uses: reactivecircus/android-emulator-runner@v2
+      with:
+        api-level: 29
+        target: default
+        arch: x86_64
+        profile: pixel_7_pro
+        script: npm run wdio
+      continue-on-error: true
 
 
 
