@@ -38,7 +38,9 @@ jobs:
         target: default
         arch: x86_64
         profile: pixel_7_pro
-        script: npm run wdio
+        script: |
+          adb install apps/wikipedia.apk
+          npm run wdio
       continue-on-error: true
 
 

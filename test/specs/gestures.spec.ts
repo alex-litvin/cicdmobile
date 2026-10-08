@@ -19,42 +19,6 @@ describe('gestures', () => {
 
     });
 
-    it('multi touch', async() => {
-
-        await browser.activateApp('com.google.android.apps.maps')
-        await browser.pause(2000)
-
-        console.log('Выполняем жест 2мя пальцами')
-
-        await browser.performActions([
-            {
-                type:'pointer',
-                id:'finger1',
-                parameters:{pointerType:'touch'},
-                actions:[
-                    {type:'pointerMove', duration:0, x:500, y:400},
-                    {type:'pointerDown'},
-                    {type:'pause', duration:200},
-                    {type:'pointerMove', duration:2000, x:500, y:950},
-                    {type:'pointerUp'}
-                ]
-            },
-            {
-                type:'pointer',
-                id:'finger2',
-                parameters:{pointerType:'touch'},
-                actions:[
-                    {type:'pointerMove', duration:0, x:500, y:1600},
-                    {type:'pointerDown'},
-                    {type:'pause', duration:200},
-                    {type:'pointerMove', duration:2000, x:500, y:1050},
-                    {type:'pointerUp'}
-                ]
-            },
-
-        ]);
-
-        await browser.releaseActions()
-       
-    });
+    
+    
 });

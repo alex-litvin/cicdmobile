@@ -65,7 +65,7 @@ export const config: Options.Testrunner = {
         // capabilities for local Appium web tests on an Android Emulator
         platformName: 'Android',
         'appium:deviceName': 'A00000K5801A2203018',
-        //'appium:app': './apps/wikipedia.apk',
+        'appium:app': './apps/wikipedia.apk',
         'appium:automationName': 'UiAutomator2',
         "appium:appPackage": "org.wikipedia",
         "appium:appActivity": "org.wikipedia.main.MainActivity",
